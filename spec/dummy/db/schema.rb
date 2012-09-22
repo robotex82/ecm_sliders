@@ -10,6 +10,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120922100802) do
+
+  create_table "ecm_sliders_items", :force => true do |t|
+    t.text     "body"
+    t.string   "url"
+    t.integer  "position"
+    t.integer  "ecm_sliders_slider_id"
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.string   "image_content_type"
+    t.datetime "image_updated_at"
+    t.string   "image_fingerprint"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "ecm_sliders_sliders", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.integer  "ecm_sliders_items_count", :default => 0, :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
 
 end
