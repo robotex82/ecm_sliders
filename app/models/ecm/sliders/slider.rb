@@ -6,7 +6,8 @@ class Ecm::Sliders::Slider < ActiveRecord::Base
            :class_name => Ecm::Sliders::Item,
            :dependent => :destroy,
            :foreign_key => :ecm_sliders_slider_id,
-           :order => 'position'
+           :order => 'position',
+           :inverse_of => :ecm_sliders_slider
 
   # attributes
   attr_accessible :description,
@@ -14,6 +15,10 @@ class Ecm::Sliders::Slider < ActiveRecord::Base
                   :identifier,
                   :name,
                   :slug
+
+  # friendly id
+  extend FriendlyId
+  friendly_id :name, :use => :slugged
 
   # validations
   validates :name, :presence => true,

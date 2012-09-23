@@ -9,8 +9,14 @@ module Ecm
         yield self
       end
 
-      # mattr_accessor :foo
-      # @@foo = nil
+      mattr_accessor :item_image_styles
+      @@item_image_styles = {}
+
+      mattr_accessor :markup_languages
+      @@markup_languages = {}
+
+      mattr_accessor :default_markup_language
+      @@default_markup_language = nil
     end
   end
 end

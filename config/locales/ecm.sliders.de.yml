@@ -1,1 +1,6 @@
 de:
+  ecm:
+    sliders:
+      active_admin:
+        menu: Slider
+

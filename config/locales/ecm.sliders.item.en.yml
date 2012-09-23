@@ -1,0 +1,24 @@
+---
+en:
+  activerecord:
+    models:
+      ecm/sliders/item:
+        one: slider item
+        other: slider items
+    attributes:
+      ecm/sliders/item:
+        body: body
+        created_at: created at
+        ecm_sliders_slider_id: slider
+        ecm_sliders_slider: slider
+        image_content_type: image filetype
+        image_file_name: imagte filename
+        image_file_size: image filesize
+        image_fingerprint: image fingerprint
+        image_updated_at: image updated at
+        position: position
+        updated_at: updated at
+        url: url
+  resources:
+    ecm_sliders_slider_items: slider-items
+

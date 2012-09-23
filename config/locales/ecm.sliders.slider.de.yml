@@ -1,0 +1,19 @@
+---
+de:
+  activerecord:
+    models:
+      ecm/sliders/slider:
+        one: Slider
+        other: Slider
+    attributes:
+      ecm/sliders/slider:
+        created_at: Erstellt am
+        description: Beschreibung
+        ecm_sliders_items: Slider Items
+        ecm_sliders_items_count: Slider Items
+        name: Name
+        slug: Freundliche ID
+        updated_at: Aktualisiert am
+  resources:
+    ecm_sliders_sliders: sliders
+

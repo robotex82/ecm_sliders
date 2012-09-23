@@ -5,6 +5,9 @@ class CreateEcmSlidersItems < ActiveRecord::Migration
       t.string :url
       t.integer :position
 
+      # acts as markup
+      t.string :markup_language
+
       # associations
       t.references :ecm_sliders_slider
 
