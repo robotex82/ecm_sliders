@@ -1,0 +1,13 @@
+<div class="item<%= " active" if item_counter == 0 %>">
+  <% if item.url.present? %>
+  <%= link_to(image_tag(item.image.url(:slider)), item.url) %>
+  <% else %>
+    <%= image_tag(item.image.url(:slider)) %>
+  <% end %>  
+  
+  <% if item.body.present? %>
+    <div class="carousel-caption slider-body">
+      <%= mu(item, :body) %>
+    </div>
+  <% end %>
+</div>

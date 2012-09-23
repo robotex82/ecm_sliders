@@ -1,0 +1,13 @@
+<div class="slider">
+
+  <div id="slider-<%= slider.to_param %>" class="carousel slide">
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+      <%= render slider.ecm_sliders_items %>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#slider-<%= slider.to_param %>" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#slider-<%= slider.to_param %>" data-slide="next">&rsaquo;</a>
+  </div>
+
+</div>
