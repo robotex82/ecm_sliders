@@ -11,17 +11,33 @@ module Ecm
 
       context "class methods" do
         context "#for_locale" do
-          before(:each) do
-            I18n.locale = :de
-            @name = 'example'
-            @slider    = FactoryGirl.create(:ecm_sliders_slider_with_items, :locale => nil, :name => @name)
-            @de_slider = FactoryGirl.create(:ecm_sliders_slider_with_items, :locale => I18n.locale.to_s, :name => @name)
+          context "prefers local specific slider" do
+            before(:each) do
+              I18n.locale = :de
+              @name = 'example'
+              @slider    = FactoryGirl.create(:ecm_sliders_slider_with_items, :locale => nil, :name => @name)
+              @de_slider = FactoryGirl.create(:ecm_sliders_slider_with_items, :locale => I18n.locale.to_s, :name => @name)
+            end
+
+            subject { Ecm::Sliders::Slider.where(:name => @name).for_locale(I18n.locale).first }
+
+            it "should select the slider for the specific locale first" do
+              subject.should eq(@de_slider)
+            end
           end
 
-          subject { Ecm::Sliders::Slider.where(:name => @name).for_locale(I18n.locale).first }
+          context "selects locale unspecific slider" do
+            before(:each) do
+              I18n.locale = :de
+              @name = 'example'
+              @slider = FactoryGirl.create(:ecm_sliders_slider_with_items, :locale => nil, :name => @name)
+            end
 
-          it "should select the slider for the specific locale" do
-            subject.should eq(@de_slider)
+            subject { Ecm::Sliders::Slider.where(:name => @name).for_locale(I18n.locale).first }
+
+            it "should select the slider without locale when there is none with specific locale" do
+              subject.should eq(@slider)
+            end
           end
         end
       end
