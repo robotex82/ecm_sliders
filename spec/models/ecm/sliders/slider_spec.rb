@@ -9,14 +9,37 @@ module Ecm
         it { should have_many :ecm_sliders_items }
       end
 
+      context "class methods" do
+        context "#for_locale" do
+          before(:each) do
+            I18n.locale = :de
+            @name = 'example'
+            @slider    = FactoryGirl.create(:ecm_sliders_slider_with_items, :locale => nil, :name => @name)
+            @de_slider = FactoryGirl.create(:ecm_sliders_slider_with_items, :locale => I18n.locale.to_s, :name => @name)
+          end
+
+          subject { Ecm::Sliders::Slider.where(:name => @name).for_locale(I18n.locale).first }
+
+          it "should select the slider for the specific locale" do
+            subject.should eq(@de_slider)
+          end
+        end
+      end
+
       context "friendly id" do
-        subject { Factory.create(:ecm_sliders_slider, :name => 'Look, a slugged category!') }
+        subject { FactoryGirl.create(:ecm_sliders_slider, :name => 'Look, a slugged category!') }
         its(:to_param) { should eq('look-a-slugged-category') }
       end
 
       context "validations" do
+        I18n.available_locales.map(&:to_s).each do |value|
+          it { should allow_value(value).for(:locale) }  
+        end
+        %w(some other values that are not allowed).each do |value|
+          it { should_not allow_value(value).for(:locale) }  
+        end 
         it { should validate_presence_of :name }
-        it { should validate_uniqueness_of :name }
+        it { should validate_uniqueness_of(:name).scoped_to(:locale) }
       end
     end
   end

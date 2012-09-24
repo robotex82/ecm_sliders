@@ -14,6 +14,7 @@ class Ecm::Sliders::Slider < ActiveRecord::Base
                   :ecm_sliders_items_attributes,
                   :ecm_sliders_items_count,
                   :identifier,
+                  :locale,
                   :name,
                   :slug
 
@@ -24,7 +25,18 @@ class Ecm::Sliders::Slider < ActiveRecord::Base
   friendly_id :name, :use => :slugged
 
   # validations
+  validates :locale, :inclusion => I18n.available_locales.map(&:to_s),
+                     :if => proc { |slider| slider.locale.present? }
   validates :name, :presence => true,
-                   :uniqueness => true
+                   :uniqueness => { :scope => :locale }
+
+  # class methods
+  def self.for_locale(locale)
+    where(
+      self.arel_table[:locale].eq(locale).or(
+        self.arel_table[:locale].eq(nil)
+      )
+    ).order('locale DESC')
+  end
 end
 

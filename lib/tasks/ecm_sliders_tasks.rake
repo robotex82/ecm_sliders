@@ -35,6 +35,13 @@ namespace :ecm do
           Ecm::Sliders::Slider.create! do |s|
             s.name = "Slider Gallery #{i}"
           end
+
+          I18n.available_locales.each do |locale|
+            Ecm::Sliders::Slider.create! do |s|
+              s.name = "Slider Gallery #{i}"
+              s.locale = locale.to_s
+            end if (rand(3) == 0)
+          end
         end
       end
 

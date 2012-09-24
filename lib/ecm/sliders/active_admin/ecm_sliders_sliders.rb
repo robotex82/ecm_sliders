@@ -6,6 +6,7 @@ ActiveAdmin.register Ecm::Sliders::Slider do
 
   form do |f|
     f.inputs do
+      f.input :locale, :as => :select, :collection => I18n.available_locales.map(&:to_s)
       f.input :name
       f.input :description
     end
@@ -29,6 +30,7 @@ ActiveAdmin.register Ecm::Sliders::Slider do
     selectable_column
 
     column :name
+    column :locale
     column :description
     column :ecm_sliders_items_count
     column :created_at
@@ -64,6 +66,7 @@ ActiveAdmin.register Ecm::Sliders::Slider do
   sidebar Ecm::Sliders::Slider.human_attribute_name(:details), :only => :show do
     attributes_table_for ecm_sliders_slider do
       row :name
+      row :locale
       row :ecm_sliders_items_count
       row :created_at
       row :updated_at

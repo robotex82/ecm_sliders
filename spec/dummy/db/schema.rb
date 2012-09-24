@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20120922105248) do
   end
 
   create_table "ecm_sliders_sliders", :force => true do |t|
+    t.string   "locale"
     t.string   "name"
     t.text     "description"
     t.string   "slug"

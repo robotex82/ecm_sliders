@@ -1,3 +1,6 @@
 <h1><%= Ecm::Sliders::Slider.model_name.human(:count => :other) %></h1>
 
-<%= render @sliders %>
+<% for slider in @sliders do %>
+  <h2><%= slider.name %></h2>
+  <%= render slider %>
+<% end %>
