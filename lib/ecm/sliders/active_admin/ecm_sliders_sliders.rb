@@ -10,6 +10,18 @@ ActiveAdmin.register Ecm::Sliders::Slider do
       f.input :description
     end
 
+    f.inputs do
+      f.has_many :ecm_sliders_items do |item|
+        if item.object.persisted?
+          item.input :_destroy, :as => :boolean, :label => I18n.t('active_admin.delete')
+        end
+        item.input :image, :as => :file,
+                        :hint => item.template.image_tag(item.object.image.url(:thumb))
+        item.input :url
+        item.input :body
+      end # f.has_many
+    end
+
     f.actions
   end
 

@@ -1,5 +1,5 @@
 module Ecm
-  module Links
+  module Sliders
     module Generators
       class LocalesGenerator < Rails::Generators::Base
         desc "Copies the locale files to your application"

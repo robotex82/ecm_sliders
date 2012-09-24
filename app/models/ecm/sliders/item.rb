@@ -16,12 +16,10 @@ class Ecm::Sliders::Item < ActiveRecord::Base
   # attributes
   attr_accessible :body,
                   :ecm_sliders_slider,
-                  :image_content_type,
-                  :image_file_name,
-                  :image_file_size,
-                  :image_fingerprint,
-                  :image_updated_at,
-                  :position
+                  :ecm_sliders_slider_id,
+                  :image,
+                  :position,
+                  :url
 
   # callbacks
   after_initialize :set_defaults

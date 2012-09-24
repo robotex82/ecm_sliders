@@ -13,7 +13,7 @@ module Ecm
       @@item_image_styles = {}
 
       mattr_accessor :markup_languages
-      @@markup_languages = {}
+      @@markup_languages = []
 
       mattr_accessor :default_markup_language
       @@default_markup_language = nil
