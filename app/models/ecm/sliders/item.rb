@@ -18,6 +18,11 @@ class Ecm::Sliders::Item < ActiveRecord::Base
                   :ecm_sliders_slider,
                   :ecm_sliders_slider_id,
                   :image,
+                  :image_file_name,
+                  :image_file_size,
+                  :image_content_type,
+                  :image_finger_print,
+                  :image_updated_at,
                   :position,
                   :url
 
@@ -29,7 +34,7 @@ class Ecm::Sliders::Item < ActiveRecord::Base
                     :styles => Ecm::Sliders::Configuration.item_image_styles
 
   # validations
-  validates :ecm_sliders_slider_id, :presence => true
+  validates :ecm_sliders_slider, :presence => true
   validates :markup_language, :presence  => true,
                               :inclusion => Ecm::Sliders::Configuration.markup_languages
 

@@ -41,7 +41,7 @@ module Ecm
       end
 
       context "validations" do
-        it { should validate_presence_of(:ecm_sliders_slider_id) }
+        it { should validate_presence_of(:ecm_sliders_slider) }
       end
     end
   end
