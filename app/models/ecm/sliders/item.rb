@@ -23,6 +23,7 @@ class Ecm::Sliders::Item < ActiveRecord::Base
                   :image_content_type,
                   :image_finger_print,
                   :image_updated_at,
+                  :markup_language,
                   :position,
                   :url
 

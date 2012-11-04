@@ -20,6 +20,7 @@ ActiveAdmin.register Ecm::Sliders::Slider do
                         :hint => item.template.image_tag(item.object.image.url(:thumb))
         item.input :url
         item.input :body
+        item.input :markup_language, :as => :select, :collection => Ecm::Sliders::Configuration.markup_languages
       end # f.has_many
     end
 
