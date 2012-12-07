@@ -9,6 +9,17 @@ module Ecm
         it { should have_many :ecm_sliders_items }
       end
 
+      context 'auto_start' do
+        it 'should respond to auto_start' do
+          subject.should respond_to(:auto_start)
+        end
+
+        it 'should be equal to the initializer configuration' do
+          slider = Ecm::Sliders::Slider.new
+          slider.auto_start.should eq(Ecm::Sliders::Configuration.slider_auto_start)
+        end
+      end
+
       context "class methods" do
         context "#for_locale" do
           context "prefers local specific slider" do
@@ -47,13 +58,36 @@ module Ecm
         its(:to_param) { should eq('look-a-slugged-category') }
       end
 
+      context 'interval' do
+        it 'should respond to interval' do
+          subject.should respond_to(:interval)
+        end
+
+        it 'should default to the settings in the initializer' do
+          slider = Ecm::Sliders::Slider.new
+          slider.interval.should eq(Ecm::Sliders::Configuration.slider_interval)
+        end
+      end
+
+      context 'interval_in_milliseconds' do
+        it 'should convert the interval value to milliseconds' do
+          slider = Ecm::Sliders::Slider.new(:interval => 1.5)
+          slider.interval_in_milliseconds.should eq(1500)
+        end
+
+        it 'should return an integer value' do
+          slider = Ecm::Sliders::Slider.new(:interval => 1.5)
+          slider.interval_in_milliseconds.should be_a(Integer)
+        end
+      end
+
       context "validations" do
         I18n.available_locales.map(&:to_s).each do |value|
-          it { should allow_value(value).for(:locale) }  
+          it { should allow_value(value).for(:locale) }
         end
         %w(some other values that are not allowed).each do |value|
-          it { should_not allow_value(value).for(:locale) }  
-        end 
+          it { should_not allow_value(value).for(:locale) }
+        end
         it { should validate_presence_of :name }
         it { should validate_uniqueness_of(:name).scoped_to(:locale) }
       end

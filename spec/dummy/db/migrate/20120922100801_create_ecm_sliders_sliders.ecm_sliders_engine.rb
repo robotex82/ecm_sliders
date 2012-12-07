@@ -5,6 +5,8 @@ class CreateEcmSlidersSliders < ActiveRecord::Migration
       t.string :locale
       t.string :name
       t.text :description
+      t.boolean :auto_start
+      t.decimal :interval, :precision => 8, :scale => 2
 
       # friendly id
       t.string :slug

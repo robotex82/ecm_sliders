@@ -10,15 +10,20 @@ class Ecm::Sliders::Slider < ActiveRecord::Base
            :inverse_of => :ecm_sliders_slider
 
   # attributes
-  attr_accessible :description,
+  attr_accessible :auto_start,
+                  :description,
                   :ecm_sliders_items_attributes,
                   :ecm_sliders_items_count,
                   :identifier,
+                  :interval,
                   :locale,
                   :name,
                   :slug
 
   accepts_nested_attributes_for :ecm_sliders_items, :allow_destroy => true
+
+  # callbacks
+  after_initialize :set_defaults
 
   # friendly id
   extend FriendlyId
@@ -37,6 +42,21 @@ class Ecm::Sliders::Slider < ActiveRecord::Base
         self.arel_table[:locale].eq(nil)
       )
     ).order('locale DESC')
+  end
+
+  # instance methods
+
+  def interval_in_milliseconds
+    (interval * 1000).to_i
+  end
+
+  private
+
+  def set_defaults
+    if new_record?
+      self.auto_start = Ecm::Sliders::Configuration.slider_auto_start if auto_start.nil?
+      self.interval ||= Ecm::Sliders::Configuration.slider_interval
+    end
   end
 end
 

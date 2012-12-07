@@ -1,5 +1,5 @@
 <div class="slider">
-  <div id="slider-<%= slider.to_param %>" class="carousel slide">
+  <div id="slider-<%= slider.to_param %>" class="carousel slide" data-interval="<%= slider.interval_in_milliseconds %>">
     <div class="carousel-inner">
       <%= render slider.ecm_sliders_items %>
     </div>
@@ -7,4 +7,12 @@
     <a class="carousel-control right" href="#slider-<%= slider.to_param %>" data-slide="next">&rsaquo;</a>
   </div>
 </div>
-
+<% if slider.auto_start %>
+<script>
+  $('#slider-<%= slider.to_param %>').carousel(
+    {
+      interval: <%= slider.interval_in_milliseconds %>
+    }
+  );
+</script>
+<% end %>

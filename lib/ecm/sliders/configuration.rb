@@ -9,6 +9,12 @@ module Ecm
         yield self
       end
 
+      mattr_accessor :slider_auto_start
+      @@slider_auto_start = nil
+
+      mattr_accessor :slider_interval
+      @@slider_interval = nil
+
       mattr_accessor :item_image_styles
       @@item_image_styles = {}
 

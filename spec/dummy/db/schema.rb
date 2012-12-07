@@ -64,10 +64,12 @@ ActiveRecord::Schema.define(:version => 20120922105248) do
     t.string   "locale"
     t.string   "name"
     t.text     "description"
+    t.boolean  "auto_start"
+    t.decimal  "interval",                :precision => 8, :scale => 2
     t.string   "slug"
-    t.integer  "ecm_sliders_items_count", :default => 0, :null => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.integer  "ecm_sliders_items_count",                               :default => 0, :null => false
+    t.datetime "created_at",                                                           :null => false
+    t.datetime "updated_at",                                                           :null => false
   end
 
 end

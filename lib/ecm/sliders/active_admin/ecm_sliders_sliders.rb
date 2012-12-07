@@ -12,6 +12,11 @@ ActiveAdmin.register Ecm::Sliders::Slider do
     end
 
     f.inputs do
+      f.input :auto_start
+      f.input :interval
+    end
+
+    f.inputs do
       f.has_many :ecm_sliders_items do |item|
         if item.object.persisted?
           item.input :_destroy, :as => :boolean, :label => I18n.t('active_admin.delete')
@@ -34,6 +39,8 @@ ActiveAdmin.register Ecm::Sliders::Slider do
     column :locale
     column :description
     column :ecm_sliders_items_count
+    column :auto_start
+    column :interval
     column :created_at
     column :updated_at
 
@@ -69,6 +76,8 @@ ActiveAdmin.register Ecm::Sliders::Slider do
       row :name
       row :locale
       row :ecm_sliders_items_count
+      row :auto_start
+      row :interval
       row :created_at
       row :updated_at
     end
