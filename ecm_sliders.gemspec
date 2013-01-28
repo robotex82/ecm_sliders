@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'acts_as_markup'
   s.add_dependency 'friendly_id', '~> 4.0.8'
   s.add_dependency 'paperclip', '~> 2.7'
-  s.add_dependency 'rails', '~> 3.2.8'
+  s.add_dependency 'rails', '~> 3.2.11'
 
   s.add_development_dependency "sqlite3"
 
