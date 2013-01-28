@@ -47,7 +47,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'forgery', '0.5.0'
 
   # Test automation
-  s.add_development_dependency 'rb-inotify', '~> 0.8.8'
+  s.add_development_dependency 'rb-inotify', '~> 0.9.0'
   # s.add_development_dependency 'guard-rails' # See gemfile for a patched version, for engine support.
   s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'guard-bundler'
