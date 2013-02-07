@@ -20,5 +20,5 @@ de:
         updated_at: Aktualisiert am
         url: URL
   resources:
-    ecm_sliders_slider_items: slider-items
+    ecm_sliders_items: slider-items
 

@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    ecm_sliders (1.0.1.pre)
+    ecm_sliders (1.0.2.pre)
       active_admin-acts_as_list (~> 0.0.6)
       acts_as_list (~> 0.1.8)
       acts_as_markup
