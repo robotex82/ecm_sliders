@@ -3,6 +3,9 @@ de:
     sliders:
       active_admin:
         menu: Slider
+      item:
+        actions:
+          more: Weiterlesen
       slider:
         warnings:
           not_found: Slider %{name} nicht gefunden

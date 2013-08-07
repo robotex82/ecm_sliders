@@ -7,11 +7,13 @@ de:
         other: Slider
     attributes:
       ecm/sliders/slider:
+        auto_start: Auto Start
         created_at: Erstellt am
         description: Beschreibung
         ecm_sliders_items: Slider Items
         ecm_sliders_items_count: Slider Items
         name: Name
+        interval: Intervall
         slug: Freundliche ID
         updated_at: Aktualisiert am
   resources:

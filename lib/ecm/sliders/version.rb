@@ -1,5 +1,6 @@
 module Ecm
   module Sliders
-    VERSION = "1.0.3.pre"
-  end  
+    VERSION = "1.0.4.pre"
+  end
 end
+

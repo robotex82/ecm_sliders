@@ -3,6 +3,9 @@ en:
     sliders:
       active_admin:
         menu: sliders
+      item:
+        actions:
+          more: more
       slider:
         warnings:
           not_found: Could not find slider %{name}
